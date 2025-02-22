@@ -1,0 +1,10 @@
+import unittest
+from src.chatbot import load_faqs
+
+class TestChatbot(unittest.TestCase):
+    def test_load_faqs(self):
+        faqs = load_faqs()
+        self.assertTrue(len(faqs) > 0, "FAQs should not be empty")
+
+if __name__ == '__main__':
+    unittest.main()
