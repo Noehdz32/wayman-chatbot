@@ -1,0 +1,25 @@
+import json
+
+def load_faqs():
+    with open('../data/faqs.json', 'r') as f:
+        return json.load(f)
+
+def chat():
+    faqs = load_faqs()
+    print("Welcome to the Oklahoma Immigration Info Bot (Beta). Type 'exit' to quit.\n")
+    while True:
+        user_input = input("Ask a question: ")
+        if user_input.lower() == 'exit':
+            break
+
+        # Very basic search logic (to be expanded)
+        best_answer = "I’m not sure, please check official sources or consult an attorney."
+        for item in faqs:
+            if user_input.lower() in item['question'].lower():
+                best_answer = item['answer']
+                break
+
+        print(f"\n{best_answer}\n")
+
+if __name__ == "__main__":
+    chat()
